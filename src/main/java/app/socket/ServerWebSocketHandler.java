@@ -23,7 +23,7 @@ public class ServerWebSocketHandler extends TextWebSocketHandler {
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         String request = message.getPayload();
-        String response = String.format("response from server to '%s'", HtmlUtils.htmlEscape(request));
+        String response = String.format("%s", HtmlUtils.htmlEscape(request));
         System.out.println("Server sends: " + response);
 
         this.template.convertAndSend("/topic/userMessages", response);
